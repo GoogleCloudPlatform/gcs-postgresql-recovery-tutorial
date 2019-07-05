@@ -1,0 +1,38 @@
+
+# Copyright 2019 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     https://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+
+###################################################################
+# NOTE: This file contains a small amount of a sample postgreSQL
+#       configuaration files used as part of an example in the
+#       reference guide. It is an illustrative sample and
+#       SHOULD NOT be used in production.
+###################################################################
+
+// [START postgresql_conf_snippet]
+
+.... illustrative snippet start ....
+
+# - Archiving -
+archive_mode=on
+archive_command = '( ARCHIVE_PATH=/var/lib/postgresql/wal/pg_wal_archive;  test ! -f $ARCHIVE_PATH/%f && cp %p $ARCHIVE_PATH/%f.cp && mv $ARCHIVE_PATH/%f.cp $ARCHIVE_PATH/%f ) '
+archive_timeout = 120
+#------------------------------------------------------------------------------
+# REPLICATION
+#------------------------------------------------------------------------------
+
+.... illustrative snippet end ....
+
+// [END postgresql_conf_example]
