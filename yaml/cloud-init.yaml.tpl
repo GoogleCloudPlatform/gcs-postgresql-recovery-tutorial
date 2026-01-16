@@ -84,7 +84,7 @@ write_files:
     Type=oneshot
     ExecStart=/usr/bin/docker run --name wal-archive \
                                   -v /mnt/disks/wal/pg_wal_archive:/mnt/wal_archive \
-                               google/cloud-sdk:slim gsutil mv /mnt/wal_archive/[0-9A-F]*[0-9A-F] gs://${ARCHIVE_BUCKET}
+                               google/cloud-sdk:slim gcloud storage mv /mnt/wal_archive/[0-9A-F]*[0-9A-F] gs://${ARCHIVE_BUCKET}
     ExecStopPost=-/usr/bin/docker rm wal-archive
 
 - path: /etc/systemd/system/wal_archive.timer
